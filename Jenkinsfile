@@ -21,7 +21,14 @@ pipeline {
                  }
         }
         
-        
+        stage('Run App') {
+            steps {
+                sh """
+                nohup java -jar target/*.jar --server.port=8081 > app.log 2>&1 &
+                """
+    }
+}
+
          
     }
 }
