@@ -1,34 +1,35 @@
-pipeline {   
-    agent any 
+pipeline {
+    agent any
 
     stages {
-        stage('Git checkout') {
+
+        stage('Git Checkout') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/sanjayyy04/springboot-java-poject-maven.git'
+                git branch: 'main',
+                    url: 'https://github.com/sanjayyy04/springboot-java-poject-maven.git'
             }
         }
-        
-        stage('Compile') {
+
+        stage('Build') {
             steps {
-                sh "mvn compile"
-                 }
+                sh 'mvn clean package -DskipTests'
+            }
         }
-        
-        stage('Package') {
+
+        stage('Stop Old App') {
             steps {
-                sh "mvn clean install"
-                
-                 }
+                sh '''
+                pkill -f "springboot" || true
+                '''
+            }
         }
-        
+
         stage('Run App') {
             steps {
-                sh """
+                sh '''
                 nohup java -jar target/*.jar --server.port=8081 > app.log 2>&1 &
-                """
-    }
-}
-
-         
+                '''
+            }
+        }
     }
 }
