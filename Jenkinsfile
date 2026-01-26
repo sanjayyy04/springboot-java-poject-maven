@@ -2,11 +2,11 @@ pipeline {
     agent any 
 
     stages {
-        // stage('Git checkout') {
-        //     steps {
-        //         git branch: 'main', changelog: false, poll: false, url: 'https://github.com/jaiswaladi246/springboot-java-poject.git'
-        //     }
-        // }
+        stage('Git checkout') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/sanjayyy04/springboot-java-poject-maven.git'
+            }
+        }
         
         stage('Compile') {
             steps {
