@@ -43,8 +43,8 @@ pipeline {
           stage('run the application') {
             steps {
                sh '''
-                    cd maven_project/springboot-java-poject-maven/target/
-                    java -jar spring-boot-web.jar --server.port=8081
+                cd target
+                java -jar spring-boot-web.jar --server.port=8081
                 '''
             }
         }
