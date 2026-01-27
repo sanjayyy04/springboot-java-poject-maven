@@ -43,8 +43,9 @@ pipeline {
           stage('run the application') {
             steps {
                sh '''
-                cd target
-                java -jar spring-boot-web.jar --server.port=8081
+                nohup java -jar target/spring-boot-web.jar \
+                --server.port=8081 \
+                > app.log 2>&1 &
                 '''
             }
         }
