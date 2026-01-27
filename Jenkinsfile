@@ -24,16 +24,16 @@ pipeline {
             }
         }
 
-       stage('Run App') {
-    steps {
-        sh '''
-        cd $WORKSPACE
-        whoami
-        java -version
-        nohup java -jar target/spring-boot-web.jar --server.port=8081 > app.log 2>&1 &
-        '''
-    }
-}
+      stage('Run App') {
+             steps {
+               sh '''
+                 cd $WORKSPACE
+                nohup java -jar target/spring-boot-web.jar \
+                --server.port=8081 \
+                > app.log 2>&1 &
+                '''
+            }
+        }
 
     }
 }
