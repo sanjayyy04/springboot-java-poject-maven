@@ -10,13 +10,17 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        // stage('Build') {
+        //     steps {
+        //         sh 'mvn clean package'
+        //     }
+        // }
+
+        stage('compile') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn compile'
             }
         }
-
-        
 
     }
 }
