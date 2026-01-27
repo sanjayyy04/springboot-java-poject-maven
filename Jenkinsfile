@@ -12,28 +12,11 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn clean package'
             }
         }
 
-        stage('Stop Old App') {
-            steps {
-                sh '''
-                pkill -f "springboot" || true
-                '''
-            }
-        }
-
-      stage('Run App') {
-             steps {
-               sh '''
-                 cd $WORKSPACE
-                nohup java -jar target/spring-boot-web.jar \
-                --server.port=8081 \
-                > app.log 2>&1 &
-                '''
-            }
-        }
+        
 
     }
 }
