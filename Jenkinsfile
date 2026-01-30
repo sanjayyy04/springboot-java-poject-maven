@@ -34,23 +34,22 @@ pipeline {
             }
         }
 
-        //  stage('Build') {
-        //     steps {
-        //         sh 'mvn clean package'
-        //     }
-        // }
-
-          stage('run the application') {
+        stage('run the application') {
             steps {
                sh '''
                 nohup java -jar target/spring-boot-web.jar \
                 --server.port=8081 \
                 > app.log 2>&1 &
                 '''
-            }
+            } 
         }
 
-
-
+        stage('run the application') {
+            steps {
+               sh 'echo docker stage'
+               
+            } 
+        }
+        
     }
 }
