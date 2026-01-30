@@ -54,6 +54,18 @@ pipeline {
                
             } 
         }
+
+         stage('docker run') {
+            steps {
+               sh '''
+                   docker stop maven-container || true
+                   docker rm maven-container || true         
+                   docker run -d -p 8081:8081 --name maven-container maven-image
+                
+                '''
+               
+            } 
+        }
         
     }
 }
