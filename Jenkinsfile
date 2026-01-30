@@ -48,7 +48,7 @@ pipeline {
             steps {
                sh '''
                    docker rmi maven-image || true         
-                   docker build -t maver-image .
+                   docker build -t maven-image .
                 
                 '''
                
