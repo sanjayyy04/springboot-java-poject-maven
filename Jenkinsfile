@@ -44,9 +44,10 @@ pipeline {
             } 
         }
 
-        stage('run the application') {
+        stage('docker build image') {
             steps {
-               sh 'echo docker stage'
+               sh 'docker build -t maver-image'
+               sh ' image builded sucessfully'
                
             } 
         }
