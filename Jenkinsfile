@@ -47,13 +47,7 @@ pipeline {
         stage('docker build image') {
             steps {
                sh '''
-              
-                   docker stop maver-image-container || true
-
-                
-                  docker rmi maven-image
-
-           
+                   docker rmi maven-image           
                    docker build -t maver-image .
                 
                 '''
